@@ -69,7 +69,8 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
             });
         }
 
-        if(changes['value'] && changes['value'].previousValue !== changes['value'].currentValue) {
+        // Eduardo
+        /*if(changes['value'] && changes['value'].previousValue !== changes['value'].currentValue) {
             const newValue: string = changes['value'].currentValue;
 
             this.renderer.setElementProperty(this.selector.nativeElement, 'value', newValue);
@@ -78,7 +79,7 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
             this.valueChanged.emit({
                 value: newValue
             });
-        }
+        }*/
 
         if(changes['disabled'] && changes['disabled'].previousValue !== changes['disabled'].currentValue) {
             this.renderer.setElementProperty(this.selector.nativeElement, 'disabled', this.disabled);
@@ -92,7 +93,9 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
         this.initPlugin();
 
         if (typeof this.value !== 'undefined') {
-            this.renderer.setElementProperty(this.selector.nativeElement, 'value', this.value);
+            // Eduardo
+            //this.renderer.setElementProperty(this.selector.nativeElement, 'value', this.value);
+            this.element.val(this.value);
             this.element.trigger('change.select2');
         }
 
